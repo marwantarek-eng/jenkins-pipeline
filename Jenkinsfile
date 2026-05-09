@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    environment {
+        AWS_CREDS = credentials('Marwan_key') 
+        DOCKER_IMAGE = "marwan-node-app"
+    }
+    stages {
+        stage('Preparation') {
+            steps {
+                sh 'docker --version'
+            }
+        }
+        stage('Docker Build') {
+            steps {
+                sh "docker build -t ${DOCKER_IMAGE}:latest ."
+            }
+        }
+        stage('Cleanup Old Container') {
+            steps {
+                sh 'docker rm -f node-app-container || true'
+            }
+        }
+        stage('Deploy to EC2') {
+            steps {
+                sh "docker run -d -p 3000:80 --name node-app-container ${DOCKER_IMAGE}:latest"
+            }
+        }
+    }
+}
