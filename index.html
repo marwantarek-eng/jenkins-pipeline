@@ -1,153 +1,89 @@
+# Simple Dockerized Web Application
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jenkins Deployment Success</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Docker Web App</title>
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: Arial, sans-serif;
         }
 
         body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-            background: linear-gradient(-45deg, #0f172a, #1e293b, #2563eb, #0ea5e9);
-            background-size: 400% 400%;
-            animation: gradientBG 10s ease infinite;
             color: white;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .card {
-            width: 500px;
+        .container {
+            background: rgba(255,255,255,0.1);
             padding: 40px;
+            border-radius: 20px;
             text-align: center;
-            border-radius: 25px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            animation: fadeIn 1.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .success-icon {
-            width: 100px;
-            height: 100px;
-            margin: auto;
-            border-radius: 50%;
-            background: #22c55e;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 50px;
-            animation: pulse 2s infinite;
-            box-shadow: 0 0 25px rgba(34, 197, 94, 0.7);
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.08);
-            }
-            100% {
-                transform: scale(1);
-            }
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            width: 400px;
         }
 
         h1 {
-            margin-top: 25px;
-            font-size: 36px;
-            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 32px;
         }
 
-        .status {
-            margin-top: 15px;
+        p {
+            margin-bottom: 20px;
             font-size: 18px;
-            color: #d1fae5;
         }
 
-        .pipeline {
-            margin-top: 25px;
-            padding: 15px;
-            border-radius: 15px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            font-size: 17px;
-            line-height: 1.8;
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            background: #ff9800;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
         }
 
-        .highlight {
-            color: #4ade80;
-            font-weight: 600;
+        button:hover {
+            background: #e68900;
+            transform: scale(1.05);
         }
 
-        .footer {
-            margin-top: 30px;
-            font-size: 15px;
-            color: #e2e8f0;
-        }
-
-        .names {
-            margin-top: 10px;
-            font-size: 18px;
-            font-weight: 600;
-            color: #facc15;
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <div class="success-icon">✓</div>
+    <div class="container">
+        <h1>Dockerized Web App</h1>
+        <p>HTML + CSS + JavaScript running inside Docker</p>
 
-        <h1>Deployment Successful</h1>
+        <button onclick="showMessage()">Click Me</button>
 
-        <p class="status">
-            Jenkins pipeline executed successfully and the application is now running inside Docker.
-        </p>
-
-        <div class="pipeline">
-            <p>✔ Build Stage Completed</p>
-            <p>✔ Docker Image Created</p>
-            <p>✔ Container Started Successfully</p>
-            <p class="highlight">✔ CI/CD Pipeline Triggered by Jenkins</p>
-        </div>
-
-        <div class="footer">
-            Developed By
-            <div class="names">
-                Marwan Tarek & Omar Hesham
-            </div>
-        </div>
+        <div id="message"></div>
     </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById('message').innerText =
+                'Application is running successfully inside Docker 🚀';
+        }
+    </script>
 
 </body>
 </html>
