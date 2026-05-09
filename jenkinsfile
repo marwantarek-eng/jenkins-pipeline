@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Deploy to EC2') {
             steps {
-                sh "docker run -d -p 3000:3000 --name node-app-container ${DOCKER_IMAGE}:latest"
+                sh "docker run -d -p 3000:80 --name node-app-container ${DOCKER_IMAGE}:latest"
             }
         }
     }
